@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h3 class="mb-4">Create a new account</h3>
+
+  <form [formGroup]="authFrom">
+    <app-input
+      label="Username"
+      [control]="authFrom.get('username')"
+    ></app-input>
+
+    {{ authFrom.get("username")?.errors | json }}
+
+    <div class="form-group mb-3">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+
+    {{ authFrom.get("password")?.errors | json }}
+
+    <div class="form-group mb-3">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+      />
+    </div>
+
+    {{ authFrom.get("confirmPassword")?.errors | json }}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
