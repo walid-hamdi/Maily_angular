@@ -1,8 +1,8 @@
 <div class="form-group mb-3">
   <label for="{{ label }}">{{ label }}</label>
-  <input type="text" class="form-control" [formControl]="control!" />
+  <input type="{{ inputType }}" class="form-control" [formControl]="control!" />
 
-  <div *ngIf="showErrors()" class="alert alert-danger mt-2" role="alert">
+  <div *ngIf="showErrors()" class="alert alert-danger mt-2 pb-0" role="alert">
     <p *ngIf="control.errors.required">Value is required</p>
     <p *ngIf="control.errors.minlength">
       Min length is {{ control.errors.minlength.requiredLength }}

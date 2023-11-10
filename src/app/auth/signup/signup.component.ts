@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PasswordMatch } from '../validators/password-match';
 import { UniqueUsername } from '../validators/unique-username';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -26,7 +27,7 @@ export class SignupComponent {
         Validators.minLength(4),
         Validators.maxLength(20),
       ]),
-      confirmPassword: new FormControl('', [
+      passwordConfirmation: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(20),
@@ -37,6 +38,29 @@ export class SignupComponent {
 
   constructor(
     private passwordMath: PasswordMatch,
-    private uniqueUsername: UniqueUsername
+    private uniqueUsername: UniqueUsername,
+    private authService: AuthService
   ) {}
+
+  onSubmit() {
+    if (!this.authFrom.valid) return;
+
+    this.authService
+      .signup(
+        this.authFrom.value as {
+          username: string;
+          password: string;
+          passwordConfirmation: string;
+        }
+      )
+      .subscribe({
+        next: (response) => {
+          // navigate to another route
+          console.log('Response');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
 }

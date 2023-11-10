@@ -3,36 +3,39 @@
 
   <form [formGroup]="authFrom">
     <app-input
+      inputType="text"
       label="Username"
       [control]="authFrom.get('username')"
     ></app-input>
 
-    {{ authFrom.get("username")?.errors | json }}
+    <app-input
+      label="Password"
+      inputType="password"
+      [control]="authFrom.get('password')"
+    ></app-input>
 
-    <div class="form-group mb-3">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        formControlName="password"
-      />
+    <app-input
+      inputType="password"
+      label="Password Confirmation"
+      [control]="authFrom.get('passwordConfirmation')"
+    ></app-input>
+
+    <!--  password don't match -->
+    <div
+      *ngIf="authFrom.errors && authFrom.errors!['passwordsDontMatch']"
+      class="alert alert-danger mt-2"
+      role="alert"
+    >
+      Password don't match
     </div>
 
-    {{ authFrom.get("password")?.errors | json }}
-
-    <div class="form-group mb-3">
-      <label for="confirmPassword">Confirm Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="confirmPassword"
-        formControlName="confirmPassword"
-      />
-    </div>
-
-    {{ authFrom.get("confirmPassword")?.errors | json }}
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button
+      type="submit"
+      [disabled]="!authFrom.valid"
+      class="btn btn-primary"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
   </form>
 </div>
