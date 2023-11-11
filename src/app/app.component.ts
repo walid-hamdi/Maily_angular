@@ -14,10 +14,11 @@ export class AppComponent {
     this.signedIn = this.authService.signedIn$;
   }
 
-  // ngOnInit(): void {
-  //   this.authService.signedIn$.subscribe((signedIn) => {
-  //     this.signedIn = signedIn;
-  //     console.log(signedIn);
-  //   });
-  // }
+  ngOnInit(): void {
+    this.authService.checkAuth().subscribe(() => {});
+
+    setTimeout(() => {
+      this.authService.signout().subscribe(() => {});
+    }, 5000);
+  }
 }

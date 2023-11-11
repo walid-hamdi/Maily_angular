@@ -56,7 +56,6 @@ export class SignupComponent {
       .subscribe({
         next: (response) => {
           // navigate to another route
-          console.log('Response');
         },
         error: (err) => {
           console.log(err);

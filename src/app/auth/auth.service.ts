@@ -30,4 +30,22 @@ export class AuthService {
         })
       );
   }
+
+  checkAuth() {
+    return this.http
+      .get<{ authenticated: boolean; username: string }>(`${this.url}/signedin`)
+      .pipe(
+        tap(({ authenticated }) => {
+          this.signedIn$.next(authenticated);
+        })
+      );
+  }
+
+  signout() {
+    return this.http.post(`${this.url}/signout`, {}).pipe(
+      tap(() => {
+        this.signedIn$.next(false);
+      })
+    );
+  }
 }
