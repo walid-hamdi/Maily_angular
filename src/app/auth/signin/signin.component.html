@@ -1,1 +1,28 @@
-<p>signin works!</p>
+<div class="container mt-5">
+  <h3 class="mb-4">Sign in to your account</h3>
+
+  <form [formGroup]="authFrom">
+    <app-input
+      inputType="text"
+      label="Username"
+      [control]="authFrom.get('username')"
+    ></app-input>
+
+    <app-input
+      label="Password"
+      inputType="password"
+      [control]="authFrom.get('password')"
+    ></app-input>
+
+  
+
+    <button
+      type="submit"
+      [disabled]="!authFrom.valid"
+      class="btn btn-primary"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </form>
+</div>
