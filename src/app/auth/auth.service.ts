@@ -50,12 +50,10 @@ export class AuthService {
   }
 
   signin(credentials: { username: string; password: string }) {
-    return this.http
-      .post<{ username: string }>(`${this.url}/signin`, credentials)
-      .pipe(
-        tap(() => {
-          this.signedIn$.next(true);
-        })
-      );
+    return this.http.post(`${this.url}/signin`, credentials).pipe(
+      tap(() => {
+        this.signedIn$.next(true);
+      })
+    );
   }
 }

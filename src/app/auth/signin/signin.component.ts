@@ -34,7 +34,10 @@ export class SigninComponent {
           console.log(response);
         },
         error: (err) => {
-          console.log(err);
+          if (err.error.username || err.error.password)
+            this.authFrom.setErrors({
+              credentials: true,
+            });
         },
       });
   }

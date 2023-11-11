@@ -58,7 +58,14 @@ export class SignupComponent {
           // navigate to another route
         },
         error: (err) => {
-          console.log(err);
+          if (err.status)
+            this.authFrom.setErrors({
+              noConnection: true,
+            });
+          else
+            this.authFrom.setErrors({
+              unknown: true,
+            });
         },
       });
   }
