@@ -29,10 +29,16 @@
       Password don't match
     </div>
 
+    <div *ngIf="loading" class="spinner-border"></div>
     <button
+      *ngIf="!loading"
       type="submit"
       [disabled]="!authFrom.valid"
-      class="btn btn-primary"
+      class="btn"
+      [ngClass]="{
+        'btn-secondary': !authFrom.valid,
+        'btn-primary': authFrom.valid
+      }"
       (click)="onSubmit()"
     >
       Submit

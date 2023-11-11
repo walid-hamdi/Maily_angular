@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PasswordMatch } from '../validators/password-match';
 import { UniqueUsername } from '../validators/unique-username';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,6 +11,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  loading = false;
   authFrom = new FormGroup(
     {
       username: new FormControl(
@@ -39,12 +41,14 @@ export class SignupComponent {
   constructor(
     private passwordMath: PasswordMatch,
     private uniqueUsername: UniqueUsername,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   onSubmit() {
     if (!this.authFrom.valid) return;
 
+    this.loading = true;
     this.authService
       .signup(
         this.authFrom.value as {
@@ -54,10 +58,12 @@ export class SignupComponent {
         }
       )
       .subscribe({
-        next: (response) => {
-          // navigate to another route
+        next: () => {
+          this.router.navigateByUrl('/inbox');
+          this.loading = false;
         },
         error: (err) => {
+          this.loading = false;
           if (err.status)
             this.authFrom.setErrors({
               noConnection: true,

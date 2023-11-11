@@ -1,13 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from './auth/auth.guard';
 import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { SignoutComponent } from './auth/signout/signout.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 const routes: Routes = [
-  { path: '', component: SigninComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: SigninComponent,
+  },
   { path: 'signout', component: SignoutComponent },
-  { path: 'signup', component: SignupComponent },
+  {
+    path: 'signup',
+
+    component: SignupComponent,
+  },
+  {
+    path: 'inbox',
+    canMatch: [authGuard],
+    loadChildren: () =>
+      import('./inbox/inbox.module').then((mod) => mod.InboxModule),
+  },
 ];
 
 @NgModule({

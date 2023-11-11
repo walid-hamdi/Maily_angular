@@ -7,7 +7,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 })
 export class AuthService {
   url = 'https://api.angular-email.com/auth';
-  signedIn$ = new BehaviorSubject(false);
+  signedIn$ = new BehaviorSubject<boolean | null>(null);
 
   constructor(private http: HttpClient) {}
 

@@ -9,16 +9,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 // implements OnInit
 export class AppComponent {
-  signedIn: BehaviorSubject<boolean>;
+  signedIn: BehaviorSubject<boolean | null>;
+
   constructor(private authService: AuthService) {
     this.signedIn = this.authService.signedIn$;
   }
 
   ngOnInit(): void {
     this.authService.checkAuth().subscribe(() => {});
-
-    setTimeout(() => {
-      this.authService.signout().subscribe(() => {});
-    }, 5000);
   }
 }
