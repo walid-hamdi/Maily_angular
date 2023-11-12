@@ -1,0 +1,13 @@
+<div class="list-group" *ngIf="emails.length > 0">
+  <a
+    *ngFor="let email of emails"
+    class="mb-1 list-group-item list-group-item-action flex-column align-items-start active"
+  >
+    <p class="mb-1">
+      {{ email.subject }}
+    </p>
+    <small>{{ email.from }}</small>
+  </a>
+</div>
+
+<div *ngIf="emails.length === 0">You haven't received any mail yet</div>
