@@ -1,7 +1,9 @@
 <div class="list-group" *ngIf="emails.length > 0">
   <a
+    [routerLink]="email.id"
     *ngFor="let email of emails"
-    class="mb-1 list-group-item list-group-item-action flex-column align-items-start active"
+    class="mb-1 list-group-item list-group-item-action flex-column align-items-start"
+    routerLinkActive="active"
   >
     <p class="mb-1">
       {{ email.subject }}

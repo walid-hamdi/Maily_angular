@@ -13,4 +13,15 @@ export class EmailService {
       `${this.url}/emails`
     );
   }
+
+  getEmail(id: string) {
+    return this.http.get<{
+      id: string;
+      subject: string;
+      text: string;
+      to: string;
+      from: string;
+      html: string;
+    }>(`${this.url}/emails/${id}`);
+  }
 }

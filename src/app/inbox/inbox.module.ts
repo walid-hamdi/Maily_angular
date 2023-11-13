@@ -7,6 +7,7 @@ import { EmailCreateComponent } from './email-create/email-create.component';
 import { EmailIndexComponent } from './email-index/email-index.component';
 import { EmailReplayComponent } from './email-replay/email-replay.component';
 import { EmailShowComponent } from './email-show/email-show.component';
+import { PlaceholderComponent } from './placeholder/placeholder.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EmailShowComponent } from './email-show/email-show.component';
     EmailCreateComponent,
     EmailIndexComponent,
     EmailReplayComponent,
-    EmailShowComponent
+    EmailShowComponent,
+    PlaceholderComponent
   ],
   imports: [
     CommonModule,
