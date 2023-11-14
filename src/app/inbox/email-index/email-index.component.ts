@@ -1,19 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { EmailService } from '../email.service';
+import { Component, Input } from '@angular/core';
+import { Email } from '../email';
 
 @Component({
   selector: 'app-email-index',
   templateUrl: './email-index.component.html',
   styleUrls: ['./email-index.component.css'],
 })
-export class EmailIndexComponent implements OnInit {
-  constructor(private emailService: EmailService) {}
-
-  emails: { id: string; subject: string; from: string }[] = [];
-
-  ngOnInit(): void {
-    this.emailService.getEmails().subscribe((response) => {
-      this.emails = response;
-    });
-  }
+export class EmailIndexComponent {
+  @Input() emails: { id: string; subject: string; from: string }[] = [];
 }

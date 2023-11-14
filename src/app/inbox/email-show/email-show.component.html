@@ -1,3 +1,7 @@
 <ng-container>
-  <p>{{ email?.text }}</p>
+  <p>{{ email.subject }}</p>
+  <p>From: {{ email.from }}</p>
+  <p>To: {{ email.to }}</p>
 </ng-container>
+
+<div [innerHTML]="email.html"></div>

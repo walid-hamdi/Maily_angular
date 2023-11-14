@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Email } from './email';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,6 @@ export class EmailService {
   }
 
   getEmail(id: string) {
-    return this.http.get<{
-      id: string;
-      subject: string;
-      text: string;
-      to: string;
-      from: string;
-      html: string;
-    }>(`${this.url}/emails/${id}`);
+    return this.http.get<Email>(`${this.url}/emails/${id}`);
   }
 }
