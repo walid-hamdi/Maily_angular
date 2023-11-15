@@ -1,4 +1,4 @@
-<div (click)="onDismiss()" class="modal modal-open block">
+<div (click)="onDismiss()" class="modal" style="display: block">
   <div (click)="$event.stopPropagation()" class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,8 +15,8 @@
       <div class="modal-body">
         <p>Modal body text goes here.</p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="(onDismiss)">
+      <div class="modal-footer default">
+        <button type="button" class="btn btn-secondary" (click)="onDismiss()">
           Ok
         </button>
       </div>

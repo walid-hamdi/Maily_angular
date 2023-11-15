@@ -13,8 +13,6 @@ import {
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit, OnDestroy {
-  @Output() dismiss = new EventEmitter();
-
   constructor(private el: ElementRef) {}
 
   ngOnInit(): void {
@@ -26,6 +24,6 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   onDismiss() {
-    this.dismiss.emit();
+    this.el.nativeElement.style.display = 'none';
   }
 }
