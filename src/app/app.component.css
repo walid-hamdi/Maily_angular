@@ -1,3 +1,7 @@
 .nav-item.active {
   background-color: #e7e7e7;
 }
+
+body.modal-open {
+  overflow: hidden;
+}

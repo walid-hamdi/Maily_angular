@@ -1,0 +1,28 @@
+<div (click)="onDismiss()" class="modal modal-open block">
+  <div (click)="$event.stopPropagation()" class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <ng-content select="[modalHeader]"></ng-content>
+        <button
+          (click)="onDismiss()"
+          type="button"
+          class="close"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="(onDismiss)">
+          Ok
+        </button>
+      </div>
+      <div class="modal-footer custom">
+        <ng-content select="[modelFooter]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
