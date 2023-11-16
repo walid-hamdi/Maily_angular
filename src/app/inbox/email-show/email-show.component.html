@@ -2,6 +2,9 @@
   <p>{{ email.subject }}</p>
   <p>From: {{ email.from }}</p>
   <p>To: {{ email.to }}</p>
+  <div>
+    <app-email-replay [email]="email"></app-email-replay>
+  </div>
 </ng-container>
 
 <div [innerHTML]="email.html"></div>
