@@ -64,8 +64,4 @@ export class AuthService {
         })
       );
   }
-
-  sendEmail(email: Email) {
-    return this.http.post(`${this.url}/emails`, email);
-  }
 }
