@@ -8,6 +8,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 export class AuthService {
   url = 'https://api.angular-email.com/auth';
   signedIn$ = new BehaviorSubject<boolean | null>(null);
+  username = '';
 
   constructor(private http: HttpClient) {}
 
@@ -35,8 +36,9 @@ export class AuthService {
     return this.http
       .get<{ authenticated: boolean; username: string }>(`${this.url}/signedin`)
       .pipe(
-        tap(({ authenticated }) => {
+        tap(({ authenticated, username }) => {
           this.signedIn$.next(authenticated);
+          this.username = username;
         })
       );
   }
@@ -50,10 +52,13 @@ export class AuthService {
   }
 
   signin(credentials: { username: string; password: string }) {
-    return this.http.post(`${this.url}/signin`, credentials).pipe(
-      tap(() => {
-        this.signedIn$.next(true);
-      })
-    );
+    return this.http
+      .post<{ username: string }>(`${this.url}/signin`, credentials)
+      .pipe(
+        tap(({ username }) => {
+          this.signedIn$.next(true);
+          this.username = username;
+        })
+      );
   }
 }
