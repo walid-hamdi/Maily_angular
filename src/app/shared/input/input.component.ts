@@ -9,6 +9,7 @@ export class InputComponent {
   @Input() label?: string;
   @Input() control?: any;
   @Input() inputType?: string;
+  @Input() controlType = 'input';
 
   showErrors() {
     const { dirty, touched, errors } = this.control;

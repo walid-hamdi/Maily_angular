@@ -1,6 +1,18 @@
 <div class="form-group mb-3">
   <label for="{{ label }}">{{ label }}</label>
-  <input type="{{ inputType }}" class="form-control" [formControl]="control!" />
+  <input
+    *ngIf="controlType === 'input'"
+    type="{{ inputType }}"
+    class="form-control"
+    [formControl]="control!"
+  />
+
+  <textarea
+    *ngIf="controlType === 'textarea'"
+    [formControl]="control!"
+    class="form-control"
+    rows="5"
+  ></textarea>
 
   <div *ngIf="showErrors()" class="alert alert-danger mt-2 pb-0" role="alert">
     <p *ngIf="control.errors.email">Email is invalid</p>
