@@ -3,6 +3,7 @@
   <input type="{{ inputType }}" class="form-control" [formControl]="control!" />
 
   <div *ngIf="showErrors()" class="alert alert-danger mt-2 pb-0" role="alert">
+    <p *ngIf="control.errors.email">Email is invalid</p>
     <p *ngIf="control.errors.required">Value is required</p>
     <p *ngIf="control.errors.minlength">
       Min length is {{ control.errors.minlength.requiredLength }}

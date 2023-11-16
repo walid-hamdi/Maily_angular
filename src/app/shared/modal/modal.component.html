@@ -6,14 +6,12 @@
         <button
           (click)="onDismiss()"
           type="button"
-          class="close"
+          class="btn-close"
           aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+        ></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <ng-content></ng-content>
       </div>
       <div class="modal-footer default">
         <button type="button" class="btn btn-secondary" (click)="onDismiss()">

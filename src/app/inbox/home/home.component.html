@@ -1,6 +1,7 @@
 <div class="container" *ngIf="emails.length > 0">
   <div class="row">
     <div class="col-4">
+      <app-email-create></app-email-create>
       <app-email-index [emails]="emails"></app-email-index>
     </div>
     <div class="col-8">
@@ -11,9 +12,7 @@
 
 <h2
   class="d-flex justify-content-center align-items-center"
-  *ngIf="emails.length >= 0"
+  *ngIf="emails.length <= 0"
 >
   You have no emails yet
 </h2>
-
-<app-modal></app-modal>
