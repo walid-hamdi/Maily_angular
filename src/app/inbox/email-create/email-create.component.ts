@@ -21,4 +21,8 @@ export class EmailCreateComponent {
       text: '',
     };
   }
+
+  onSubmit(email:Email){
+    
+  }
 }

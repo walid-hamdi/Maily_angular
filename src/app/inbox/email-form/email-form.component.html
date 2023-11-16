@@ -23,5 +23,12 @@
     [control]="emailForm?.get('text')"
   ></app-input>
 
-  <button [disabled]="!emailForm?.valid" class="btn btn-primary">Send</button>
+  <button
+    (click)="submit()"
+    [disabled]="!emailForm?.valid"
+    class="btn btn-primary"
+    type="submit"
+  >
+    Send
+  </button>
 </form>
