@@ -22,7 +22,9 @@ export class EmailCreateComponent {
     };
   }
 
-  onSubmit(email:Email){
-    
+  onSubmit(email: Email) {
+    this.authService.sendEmail(email).subscribe(() => {
+      this.showModal = false;
+    });
   }
 }
