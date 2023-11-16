@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Email } from '../email';
 import { EmailService } from '../email.service';
 
@@ -7,13 +7,13 @@ import { EmailService } from '../email.service';
   templateUrl: './email-replay.component.html',
   styleUrls: ['./email-replay.component.css'],
 })
-export class EmailReplayComponent implements OnInit {
+export class EmailReplayComponent implements OnChanges {
   showModal = false;
   @Input() email?: Email;
 
   constructor(private emailService: EmailService) {}
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     if (this.email)
       this.email = {
         ...this.email,
